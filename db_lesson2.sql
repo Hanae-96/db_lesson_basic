@@ -5,10 +5,12 @@ CREATE TABLE departments (
     -> created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     -> updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     -> );
+
 DESC departments;
 
 Q2
 ALTER TABLE people ADD department_id INT UNSIGNED AFTER email;
+
 DESC people;
 
 Q3
@@ -19,7 +21,9 @@ INSERT INTO departments (name)
     -> ('経理'),
     -> ('人事'),
     -> ('情報システム');
+
 DESC departments;
+
 INSERT INTO people (name, email, department_id, age, gender)
     -> VALUES
     -> ('武藤遊戯', 'mutou@beyond-works.co.jp', 4, 30, 1),
@@ -32,7 +36,9 @@ INSERT INTO people (name, email, department_id, age, gender)
     -> ('火野レイ', 'hino@beyond-works.co.jp', 2, 35, 2),
     -> ('木野まこと', 'kino@beyond-works.co.jp', 3, 35, 2),
     -> ('愛野美奈子', 'aino@beyond-works.co.jp', 2, 35, 2);
+
 SELECT * FROM people;
+
 INSERT INTO reports (person_id, content)
     -> VALUES
     -> (7, '9月人事異動のお知らせ'),
@@ -45,6 +51,7 @@ INSERT INTO reports (person_id, content)
     -> (14, '来週月曜日9:00からテストですね。デバッグはいつやりますか？'),
     -> (15, '先月の収入12,000,000円、 支出8,000,000円でした。'),
     -> (16, 'デバッグは再来週月曜日10:00からにしましょう。');
+
 SELECT * FROM reports;
 
 Q4
@@ -85,7 +92,7 @@ WHERE
 ORDER BY
   `created_at`;
 
-"作成した順になるように部署が営業の名前、メールアドレス、年齢をpeopleテーブルから取得する。"
+"作成した順になるように営業の名前、メールアドレス、年齢をpeopleテーブルから取得する。"
 
 Q7
 SELECT name FROM people WHERE gender = 2 AND age BETWEEN 20 AND 29 OR gender = 1 AND age BETWEEN 40 AND 49;
